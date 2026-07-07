@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="ext-resource-dependency" content="assets/mujer-1.jpeg" data-resource-id="mujer1">
+<meta name="ext-resource-dependency" content="assets/mujer-2.jpeg" data-resource-id="mujer2">
+<meta name="ext-resource-dependency" content="assets/mujer-3.jpeg" data-resource-id="mujer3">
+<meta name="ext-resource-dependency" content="assets/hombre-1.jpeg" data-resource-id="hombre1">
+<meta name="ext-resource-dependency" content="assets/hombre-2.jpeg" data-resource-id="hombre2">
+<meta name="ext-resource-dependency" content="assets/hombre-3.jpeg" data-resource-id="hombre3">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=Great+Vibes&amp;family=Parisienne&amp;family=Mulish:wght@300;400;500;600;700&amp;family=Sacramento&amp;display=swap" rel="stylesheet">
+<script src="assets/image-slot.js"></script>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#fbf5e1;color:#2c3a3a;font-family:'Mulish',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#6b5320;text-decoration:none}
+a:hover{color:#e08a6a}
+img{display:block}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+@keyframes floaty{0%{transform:translateY(0) rotate(0);opacity:.35}50%{transform:translateY(-26px) rotate(10deg);opacity:.85}100%{transform:translateY(0) rotate(0);opacity:.35}}
+@keyframes palmSway{0%,100%{transform:rotate(-3.5deg)}50%{transform:rotate(3.5deg)}}
+@keyframes floatItem{0%{transform:translate(0,0) rotate(-5deg)}50%{transform:translate(14px,-30px) rotate(5deg)}100%{transform:translate(0,0) rotate(-5deg)}}
+@keyframes sealBob{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.06)}}
+</style>
+</helmet>
+
+<!-- HERO -->
+<section data-screen-label="Portada" style="position:relative;isolation:isolate;overflow:hidden;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 24px;background:#5a4718;color:#fff">
+  <div style="position:absolute;inset:0;z-index:-2;background:url('assets/pareja.jpeg') center 58%/cover no-repeat;filter:sepia(.58) saturate(1.7) brightness(1.1) contrast(1.02) hue-rotate(-14deg)"></div>
+  <div style="position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg,rgba(130,88,22,.30),rgba(95,62,16,.36) 48%,rgba(45,30,10,.72)); opacity: 1"></div>
+  <div style="font-family:'Parisienne',cursive;font-size:clamp(46px,13vw,82px);color:#fbeede;line-height:1.1;text-shadow:0 3px 20px rgba(0,0,0,.4)">¡Nos casamos!</div>
+  <h1 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(46px,14vw,92px);line-height:1;margin:8px 0 4px;letter-spacing:.5px;text-shadow:0 2px 22px rgba(0,0,0,.4)">Javier Andrés<span style="display:block;font-family:'Sacramond','Sacramento',cursive;font-size:.42em;font-weight:400;margin:2px 0;color:#f2c9b4">&amp;</span>Mariana</h1>
+  <div style="font-family: 'Mulish',sans-serif; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase; font-size: clamp(11px,3vw,14px); margin-top: 6px; text-shadow: 0 1px 10px rgba(0,0,0,.45); color: #F6F3F3"><span style="font-size: clamp(11px, 3vw, 18px)">Vive con nosotros esta experiencia</span></div>
+  <div style="width:54px;height:1px;background:rgba(255,255,255,.7);margin:24px 0"></div>
+  <div style="font-family: 'Cormorant Garamond',serif; font-size: clamp(22px,6.5vw,38px); letter-spacing: 3px; font-weight: 600; height: 45px">5 · 6 · 7 Diciembre 2026</div>
+  <div style="font-family:'Mulish',sans-serif;font-weight:300;letter-spacing:2px;font-size:13px;margin-top:7px;text-shadow:0 1px 10px rgba(0,0,0,.45)"><br></div>
+  <div style="margin-top:28px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:10px 20px;font-size:14px;font-weight:500">{{ saludo }} 🤍</div>
+  <div style="position:absolute;bottom:22px;left:50%;animation:bob 2.2s ease-in-out infinite;font-size:11px;letter-spacing:3px;opacity:.9">DESLIZA ↓</div>
+</section>
+
+<!-- HISTORIA / ISABEL ALLENDE -->
+<section data-screen-label="Nuestra historia" style="padding:76px 24px 66px;text-align:center">
+  <div style="max-width:600px;margin:0 auto">
+    <div style="font-family: 'Mulish',sans-serif; letter-spacing: 4px; text-transform: uppercase; font-size: 14px; color: #e08a6a; font-weight: 600; margin-bottom: 26px; height: 18px">Nuestra historia</div>
+    <img src="./whatsapp-image-2026-07-06-at-16-00-46-mr9pgyh8.jpeg" alt="Javier Andrés y Mariana" style="width: 100%; max-width: 340px; margin: 0 auto; height: 420px; object-fit: cover; object-position: center 20%; border-radius: 200px 200px 14px 14px; box-shadow: 0 22px 44px rgba(90,70,25,.16); border: 6px solid #fff; opacity: 0.72; border-style: none; background: linear-gradient(180deg, #D7AF93, #28211a); overflow: hidden">
+    
+    <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(23px,5.6vw,31px);line-height:1.42;color:#6b5320;margin:34px auto 16px;max-width:520px">“El amor verdadero es el que se elige cada día: crece en lo cotidiano y florece, sereno, con el tiempo.”</div><div style="font-family: 'Mulish',sans-serif; letter-spacing: 3px; text-transform: uppercase; font-size: 10px; color: #9a8a72; font-weight: 600">— Isabel Allende</div>
+  </div>
+</section>
+
+<!-- MENSAJE DE MARIANA (WHATSAPP) -->
+<section data-screen-label="Mensaje de Mariana" style="padding:8px 24px 78px">
+  <div style="max-width:460px;margin:0 auto">
+    <div style="text-align: center; font-family: 'Mulish',sans-serif; letter-spacing: 4px; text-transform: uppercase; font-size: 14px; color: #e08a6a; font-weight: 600; margin-bottom: 22px">UN MENSAJE DE JAVIER Y MARIANA</div>
+    <div style="border-radius:22px;overflow:hidden;box-shadow:0 20px 44px rgba(90,70,25,.14);border:1px solid #ece1cf">
+      <div style="background:#128C7E;display:flex;align-items:center;gap:12px;padding:12px 16px">
+        <div style="width:42px;height:42px;border-radius:50%;background:#f2c9b4;color:#8a4a34;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600">JM</div>
+        <div style="line-height:1.2">
+          <div style="color:#fff;font-weight:700;font-size:15px">Boda de Javier y Mariana</div>
+          <div style="color:rgba(255,255,255,.8);font-size:12px">escribiendo...</div>
+        </div>
+      </div>
+      <div style="background:#e4ded3;padding:20px 16px 22px;min-height:150px">
+        <div style="background:#fff;border-radius:4px 12px 12px 12px;padding:12px 14px 8px;max-width:92%;box-shadow:0 1px 2px rgba(0,0,0,.12)">
+          <div style="font-size:14.5px;line-height:1.55;color:#2c3a3a">¡Hola! 🤍 Para nosotros es un sueño celebrar este día frente al mar, y no queremos vivirlo sin ti. Empaca tu mejor sonrisa, ropa fresca y muchas ganas de bailar. Ven a reír, brindar y soñar con nosotros en el Pacífico.</div>
+          <div style="text-align:right;font-size:11px;color:#8aa; margin-top:3px;color:#93a8a2">10:24 <span style="color:#34b7f1">✓✓</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALENDARIO -->
+<sc-if value="{{ mostrarCalendario }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Calendario" style="padding: 60px 24px 64px; background: linear-gradient(180deg, #F6ECCA00, #fbf5e1)">
+  <div style="max-width:460px;margin:0 auto;text-align:center">
+    <div style="font-family: 'Mulish',sans-serif; letter-spacing: 4px; text-transform: uppercase; font-size: 14px; color: #e08a6a; font-weight: 600; margin-bottom: 10px">Reserva la fecha</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,7.5vw,40px);color:#6b5320;margin:0 0 26px">Tres días para celebrar</h2>
+    <img src="assets/calendario-dic.jpeg" alt="Calendario Diciembre 2026 — 5 dic fogata, 6 dic boda, 7 dic regreso" style="width:100%;max-width:440px;margin:0 auto;display:block;border-radius:18px;box-shadow:0 16px 40px rgba(90,70,25,.18)">
+  </div>
+</section>
+</sc-if>
+
+<!-- CRONOGRAMA -->
+<section data-screen-label="Cronograma" style="padding:70px 24px">
+  <div style="max-width:560px;margin:0 auto">
+    <div style="text-align: center; font-family: 'Mulish',sans-serif; letter-spacing: 4px; text-transform: uppercase; font-size: 14px; color: #e08a6a; font-weight: 600; margin-bottom: 10px">Cronograma</div>
+    <h2 style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,7.5vw,40px);color:#6b5320;margin:0 0 36px">Cómo viviremos estos días</h2>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;gap:18px;align-items:flex-start">
+        <div style="flex: none; width: 60px; height: 60px; border-radius: 50%; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 8px 18px rgba(224,138,106,.35); background-color: #A1B09B"><span style="font-family: 'Cormorant Garamond',serif; font-size: 24px; font-weight: 600; line-height: 1; color: #130F0F">05</span><span style="font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #2A2525">DIC</span></div>
+        <div style="flex:1;background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 8px 22px rgba(90,70,25,.07);border:1px solid #f0e6d5">
+          <div style="font-family: 'Cormorant Garamond',serif; font-size: 23px; color: #6b5320; font-weight: 600; line-height: 1.15">Despedida de soltera · Fogata</div>
+          <div style="font-size: 15px; color: #A1B09B; font-weight: 600; letter-spacing: .5px; margin: 3px 0 6px">Noche de Blancos 🤍</div>
+          <div style="font-size:14px;line-height:1.5;color:#5a6a68">Arrancamos la celebración en la playa. <br>Vístete de blanco para la fogata bajo las estrellas.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:18px;align-items:flex-start">
+        <div style="flex:none;width:60px;height:60px;border-radius:50%;background:#ecd571;color:#5a4718;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(180,150,50,.4)"><span style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;line-height:1">06</span><span style="font-size:9px;letter-spacing:1px;text-transform:uppercase">DIC</span></div>
+        <div style="flex:1;background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 8px 22px rgba(90,70,25,.07);border:1px solid #f0e6d5">
+          <div style="font-family: 'Cormorant Garamond',serif; font-size: 23px; color: #6b5320; font-weight: 600; line-height: 1.15">Nuestro día</div>
+          <div style="font-size:14px;line-height:1.5;color:#5a6a68;margin-top:6px">El momento que tanto hemos soñado. Nos damos el sí frente al mar, y celebramos hasta que baje la marea.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:18px;align-items:flex-start">
+        <div style="flex: none; width: 60px; height: 60px; border-radius: 50%; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 8px 18px rgba(221,111,142,.35); background-color: #B9D9E3"><span style="font-family: 'Cormorant Garamond',serif; font-size: 24px; font-weight: 600; line-height: 1; color: #5A5757">07</span><span style="font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: #464545">DIC</span></div>
+        <div style="flex:1;background:#fff;border-radius:16px;padding:16px 18px;box-shadow:0 8px 22px rgba(90,70,25,.07);border:1px solid #f0e6d5">
+          <div style="font-family: 'Cormorant Garamond',serif; font-size: 23px; color: #6b5320; font-weight: 600; line-height: 1.15">Regreso</div>
+          <div style="font-size:14px;line-height:1.5;color:#5a6a68;margin-top:6px">Nos despedimos del Pacífico con el corazón lleno y la maleta llena de recuerdos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACION -->
+<section data-screen-label="Ubicación" style="padding:6px 24px 74px;text-align:center">
+  <div style="max-width:560px;margin:0 auto;background:linear-gradient(180deg, #C0E5F8, #595915BD);border-radius:24px;padding:46px 28px;color:#fff;box-shadow:0 18px 44px rgba(90,70,25,.22)">
+    <div style="font-family: 'Mulish',sans-serif; letter-spacing: 4px; text-transform: uppercase; font-size: 12px; color: #7A7253; font-weight: 600; margin-bottom: 12px">¿Dónde nos vemos?</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,8vw,44px);margin:0 0 6px">Juanchaco – Ladrilleros</h2>
+    <div style="font-family:'Mulish',sans-serif;font-weight:300;letter-spacing:1px;font-size:14px;color:#f4edcf;margin-bottom:26px">&nbsp;Pacífico Colombiano</div>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=Juanchaco+Ladrilleros+Valle+del+Cauca" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;background:#fff;color:#6b5320;font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.2)"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"></path></svg>Ver en el mapa</a>
+  </div>
+</section>
+
+<!-- OUTFIT -->
+<section data-screen-label="Outfit ideal" style="padding:10px 24px 74px">
+  <div style="max-width:640px;margin:0 auto;text-align:center">
+    <div style="font-family: 'Mulish',sans-serif; letter-spacing: 4px; text-transform: uppercase; font-size: 15px; color: #e08a6a; font-weight: 600; margin-bottom: 10px">Tu outfit ideal</div>
+    <h2 style="font-family: 'Cormorant Garamond',serif; font-weight: 500; font-size: clamp(28px,7.5vw,32px); color: #6b5320; margin: 0 0 14px">Aquí tienes la inspiración&nbsp;</h2>
+    <p style="font-size:15px;line-height:1.6;color:#5a6a68;max-width:460px;margin:0 auto 16px">Queremos vernos increíbles junto al mar...<br>&nbsp;Toca cada opción para ver la galería.</p>
+    
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+      <div onClick="{{ openMujer }}" style="position:relative;height:300px;border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 12px 30px rgba(90,70,25,.14);background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(20,20,30,.72)),url('assets/mujer-1.jpeg') center/cover no-repeat">
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:18px;text-align:left;color:#fff">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;line-height:1">Ellas</div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:.5px;margin-top:2px;opacity:.95">Ver inspiración →</div>
+        </div>
+      </div>
+      <div onClick="{{ openHombre }}" style="position:relative;height:300px;border-radius:18px;overflow:hidden;cursor:pointer;box-shadow:0 12px 30px rgba(90,70,25,.14);background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(20,20,30,.72)),url('assets/hombre-1.jpeg') center 20%/cover no-repeat">
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:18px;text-align:left;color:#fff">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;line-height:1">Ellos</div>
+          <div style="font-size:13px;font-weight:600;letter-spacing:.5px;margin-top:2px;opacity:.95">Ver inspiración →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIRMAR ASISTENCIA -->
+<section data-screen-label="Confirmar asistencia" style="padding: 64px 24px; background: linear-gradient(180deg, #F6ECCA00, #f8f0d8); text-align: center">
+  <div style="max-width:520px;margin:0 auto">
+    <div style="font-family: 'Mulish',sans-serif; letter-spacing: 4px; text-transform: uppercase; font-size: 14px; color: #e08a6a; font-weight: 600; margin-bottom: 12px">Asistencia</div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(30px,8vw,44px);color:#6b5320;margin:0 0 14px">Confirma tu asistencia</h2>
+    <p style="font-size:15px;line-height:1.6;color:#5a6a68;max-width:420px;margin:0 auto 28px">Tu presencia es lo más importante para nosotros. Escríbenos por WhatsApp para saber que contamos contigo.</p>
+    <a href="{{ waConfirm }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:11px;background:#25D366;color:#fff;font-weight:700;font-size:16px;padding:16px 32px;border-radius:999px;box-shadow:0 12px 26px rgba(37,211,102,.4)"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.04-.96.22-3.23-.67-2.72-1.07-4.45-3.85-4.58-4.03-.13-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.95-2.25.24-.27.53-.34.71-.34.18 0 .36.01.51.01.16.01.38-.06.6.46.24.56.79 1.94.86 2.08.07.14.11.31.02.49-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.86.27.14.45.2.51.31.07.11.07.63-.17 1.31z"></path></svg>Confirmar por WhatsApp</a>
+    
+  </div>
+</section>
+
+<!-- HOSPEDAJE Y TRANSPORTE -->
+<sc-if value="{{ mostrarHospedaje }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Hospedaje y transporte" style="padding:72px 24px 40px">
+  <div style="max-width:560px;margin:0 auto">
+    <div style="text-align: center; font-family: 'Mulish',sans-serif; letter-spacing: 4px; text-transform: uppercase; font-size: 14px; color: #e08a6a; font-weight: 600; margin-bottom: 10px">Hospedaje y transporte</div>
+    <h2 style="text-align:center;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(28px,7.5vw,40px);color:#6b5320;margin:0 0 30px">Prepara tu viaje</h2>
+
+    <div style="background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 14px 34px rgba(90,70,25,.12);border:1px solid #f0e6d5;margin-bottom:22px">
+      <image-slot id="vidamar-foto" shape="rect" fit="cover" placeholder="Arrastra aquí la foto de Vidamar Cabañas" style="width:100%;height:230px;display:block"></image-slot>
+      <div style="padding:20px">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:#6b5320;line-height:1.1">Vidamar Cabañas</div>
+        <div style="font-size:14px;color:#5a6a68;margin:5px 0 14px">Cabañas frente al mar en Juanchaco, Ladrilleros.<br>Nuestra recomendación para hospedarte.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center">
+          <a href="https://instagram.com/vidamarjuanchaco" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#c13584"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 3.24A6.6 6.6 0 1 0 12 18.6 6.6 6.6 0 0 0 12 5.4zm0 10.89A4.29 4.29 0 1 1 12 7.7a4.29 4.29 0 0 1 0 8.59zm6.85-11.15a1.54 1.54 0 1 1-3.08 0 1.54 1.54 0 0 1 3.08 0z"></path></svg>@vidamarjuanchaco</a>
+          <a href="https://instagram.com/vidamarjuanchaco" target="_blank" rel="noopener" style="margin-left:auto;display:inline-flex;align-items:center;gap:7px;background:#6b5320;color:#fff;font-weight:700;font-size:14px;padding:11px 20px;border-radius:999px">Reserva aquí →</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="background:#fff;border-radius:20px;padding:22px;box-shadow:0 14px 34px rgba(90,70,25,.10);border:1px solid #f0e6d5">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+        <div style="flex:none;width:44px;height:44px;border-radius:50%;background:#f6eccb;color:#6b5320;display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 21c-1.39 0-2.78-.47-4-1.32-2.44 1.71-5.56 1.71-8 0C6.78 20.53 5.39 21 4 21H2v2h2c1.38 0 2.74-.35 4-.99 2.52 1.29 5.48 1.29 8 0 1.26.65 2.62.99 4 .99h2v-2h-2zM3.95 19H4c1.6 0 3.02-.88 4-2 .98 1.12 2.4 2 4 2s3.02-.88 4-2c.98 1.12 2.4 2 4 2h.05l1.9-6.68a1 1 0 0 0-.68-1.24L20 10.62V6c0-1.1-.9-2-2-2h-3V1H9v3H6c-1.1 0-2 .9-2 2v4.62l-1.27.46a1 1 0 0 0-.68 1.24L3.95 19zM6 6h12v3.97L12 8 6 9.97V6z"></path></svg></div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#6b5320;line-height:1.1">Tiquetes de lancha</div><div style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#6b5320;line-height:1.1">Tiquetes de lancha</div>
+      </div>
+      <div style="font-size:14px;font-weight:600;color:#e08a6a;letter-spacing:.5px;margin-bottom:8px">Buenaventura ⇆ Juanchaco · ida y regreso</div>
+      <div style="font-size:14px;line-height:1.6;color:#5a6a68">El viaje se hace en lancha desde el muelle turístico de Buenaventura hasta Juanchaco, y de regreso. Te recomendamos reservar tus tiquetes de ida y vuelta con anticipación. ¿Necesitas ayuda para coordinarlos?</div>
+      <a href="{{ waAyuda }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:14px;color:#25a35a;font-weight:700;font-size:14px">Escríbenos y te ayudamos →</a>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- CIERRE -->
+<section data-screen-label="Cierre" style="background: linear-gradient(180deg, #C0E5F8, #595915BD); color: #fff; text-align: center; padding: 64px 24px 56px">
+  <div style="font-family: 'Sacramento',cursive; font-size: 50px; color: #756861; line-height: 1">Con amor,</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(30px,8vw,46px);font-weight:500;margin:6px 0 18px;line-height:1.1">Javier Andrés &amp; Mariana</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:0 auto 18px;max-width:220px"><span style="flex:1;height:1px;background:rgba(255,255,255,.35)"></span><span style="color:#efd98a">✦</span><span style="flex:1;height:1px;background:rgba(255,255,255,.35)"></span></div>
+  <div style="font-family: 'Mulish',sans-serif; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; font-size: 15px; color: #f4edcf">Te esperamos en el Pacífico</div>
+  <div style="font-family:'Mulish',sans-serif;font-size:12px;color:rgba(255,255,255,.55);margin-top:20px">5 · 6 · 7 Diciembre 2026 · Juanchaco – Ladrilleros</div>
+</section>
+
+<!-- PALMERAS MINIMALISTAS (iconos flotando) -->
+<div aria-hidden="true" style="position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden">
+  <span style="position:absolute;top:9%;left:6%;width:46px;height:46px;color:rgba(107,83,32,.30);animation:floatItem 11s ease-in-out infinite"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:20%;left:80%;width:58px;height:58px;color:rgba(224,138,106,.26);animation:floatItem 14s ease-in-out infinite;animation-delay:1.4s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:38%;left:12%;width:40px;height:40px;color:rgba(107,83,32,.28);animation:floatItem 10s ease-in-out infinite;animation-delay:.7s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:33%;left:60%;width:52px;height:52px;color:rgba(107,83,32,.24);animation:floatItem 13s ease-in-out infinite;animation-delay:2.1s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:58%;left:4%;width:54px;height:54px;color:rgba(224,138,106,.24);animation:floatItem 12s ease-in-out infinite;animation-delay:.4s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:64%;left:82%;width:44px;height:44px;color:rgba(107,83,32,.28);animation:floatItem 11.5s ease-in-out infinite;animation-delay:1.9s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:76%;left:34%;width:48px;height:48px;color:rgba(107,83,32,.26);animation:floatItem 13.5s ease-in-out infinite;animation-delay:1s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:84%;left:66%;width:42px;height:42px;color:rgba(224,138,106,.22);animation:floatItem 12.5s ease-in-out infinite;animation-delay:2.6s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:4%;left:46%;width:38px;height:38px;color:rgba(107,83,32,.22);animation:floatItem 10.5s ease-in-out infinite;animation-delay:1.5s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:50%;left:42%;width:44px;height:44px;color:rgba(107,83,32,.18);animation:floatItem 15s ease-in-out infinite;animation-delay:3s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:90%;left:14%;width:46px;height:46px;color:rgba(107,83,32,.24);animation:floatItem 12s ease-in-out infinite;animation-delay:2.3s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+  <span style="position:absolute;top:14%;left:92%;width:40px;height:40px;color:rgba(224,138,106,.22);animation:floatItem 13s ease-in-out infinite;animation-delay:1.7s"><svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-4-1-8 .5-12"></path><path d="M12.5 9c-3-1.4-6-1.2-9 .8"></path><path d="M12.5 9c3-1.4 6-1.2 9 .8"></path><path d="M12.5 9c-2-2.8-5-4-8.2-3.8"></path><path d="M12.5 9c2-2.8 5-4 8.2-3.8"></path><path d="M12.5 9c0-2 .3-4 1.4-5.8"></path></svg></span>
+</div>
+
+<!-- SOBRE DE APERTURA (splash) -->
+<div onClick="{{ openInvite }}" style="{{ overlayStyle }}">
+  <div style="font-family:'Mulish',sans-serif;letter-spacing:5px;text-transform:uppercase;font-size:12px;color:#b39a7a">Estás invitad@</div>
+  <div style="font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;font-size:clamp(40px,12vw,68px);color:#6b5320;line-height:1;margin-top:-4px">{{ splashName }}</div>
+  <div style="position:relative;width:min(78vw,300px);aspect-ratio:3/2;margin:6px auto 0;cursor:pointer">
+    <div style="position:absolute;inset:0;background:#fdfbf6;border-radius:14px;box-shadow:0 22px 48px rgba(90,70,25,.18);border:1px solid #efe4d2"></div>
+    <div style="position:absolute;top:0;left:0;right:0;height:64%;background:linear-gradient(160deg,#ecd9bf,#e2c8a6);clip-path:polygon(0 0,100% 0,50% 94%);border-radius:14px 14px 0 0"></div>
+    <div style="position:absolute;left:50%;top:54%;width:66px;height:66px;border-radius:50%;background:#6b5320;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(90,70,25,.32);animation:sealBob 2.4s ease-in-out infinite"><span style="color:#f2c9b4;font-size:28px;line-height:1">♥</span></div>
+  </div>
+  <div style="display:inline-flex;align-items:center;gap:8px;font-family:'Mulish',sans-serif;letter-spacing:3px;text-transform:uppercase;font-size:13px;color:#9a8a72;margin-top:8px">Toca para abrir ✦</div>
+</div>
+
+<!-- GALERIA MODAL -->
+<sc-if value="{{ gOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ closeG }}" style="position:fixed;inset:0;z-index:200;background:rgba(12,38,42,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px">
+  <div style="color:#f2c9b4;font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:1px;margin-bottom:16px">{{ gTitle }}</div>
+  <div onClick="{{ stop }}" style="position:relative;max-width:520px;width:100%;display:flex;align-items:center;justify-content:center">
+    <button onClick="{{ prevG }}" style="position:absolute;left:6px;top:50%;transform:translateY(-50%);z-index:2;width:46px;height:46px;border-radius:50%;border:none;background:rgba(255,255,255,.9);color:#6b5320;font-size:28px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35)">‹</button>
+    {{ galleryImgEl }}
+    <button onClick="{{ nextG }}" style="position:absolute;right:6px;top:50%;transform:translateY(-50%);z-index:2;width:46px;height:46px;border-radius:50%;border:none;background:rgba(255,255,255,.9);color:#6b5320;font-size:28px;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.35)">›</button>
+  </div>
+  <div style="color:rgba(255,255,255,.85);margin-top:16px;font-size:14px;letter-spacing:3px">{{ gPos }}</div>
+  <button onClick="{{ closeG }}" style="margin-top:18px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:999px;padding:10px 24px;font-family:'Mulish',sans-serif;font-size:14px;cursor:pointer">Cerrar</button>
+</div>
+</sc-if>
+
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#f3e6ad"/><path d="M200 300c-78-50-120-98-120-150a56 56 0 0 1 120-30 56 56 0 0 1 120 30c0 52-42 100-120 150z" fill="none" stroke="#c76d8b" stroke-width="12"/></svg></template></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:430,&quot;height&quot;:900},&quot;mostrarCalendario&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Secciones&quot;},&quot;mostrarHospedaje&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Secciones&quot;}}">
+class Component extends DCLogic {
+  state = { invitado: '', opened: false, gOpen: false, gType: null, gIdx: 0 };
+
+  galleries = {
+    mujer: [window.__resources.mujer1, window.__resources.mujer2, window.__resources.mujer3],
+    hombre: [window.__resources.hombre1, window.__resources.hombre2, window.__resources.hombre3]
+  };
+
+  componentDidMount() {
+    try {
+      const raw = new URLSearchParams(window.location.search).get('invitado');
+      if (raw) {
+        const n = decodeURIComponent(raw).trim().replace(/[_+]/g, ' ');
+        const f = n.replace(/\b\w/g, c => c.toUpperCase());
+        this.setState({ invitado: f });
+      }
+    } catch (e) {}
+  }
+
+  renderVals() {
+    const arr = this.state.gType ? this.galleries[this.state.gType] : [];
+    const idx = this.state.gIdx;
+    const inv = this.state.invitado;
+    const waBase = 'https://wa.me/573136389010?text=';
+    return {
+      mostrarCalendario: this.props.mostrarCalendario ?? true,
+      mostrarHospedaje: this.props.mostrarHospedaje ?? true,
+      invitado: inv || '',
+      saludo: inv ? ('Hola, ' + inv) : 'Bienvenid@',
+      waConfirm: waBase + encodeURIComponent('¡Hola! ' + (inv ? 'Soy ' + inv + '. ' : '') + 'Quiero confirmar mi asistencia a la boda de Javier Andrés y Mariana. 🤍'),
+      waAyuda: 'https://wa.me/573206297449?text=' + encodeURIComponent('Hola voy a asistir a la Boda de Javier Andres y Mariana, ayudame con los tiquetes de lancha ida y regreso por favor'),
+      opened: this.state.opened,
+      splashName: inv || 'Bienvenid@',
+      openInvite: () => this.setState({ opened: true }),
+      overlayStyle: 'position:fixed;inset:0;z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center;padding:24px;background:linear-gradient(160deg,#fbf5e1,#f4edd3 55%,#efe4bd);transition:opacity .9s ease,transform .9s ease;' + (this.state.opened ? 'opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.06)' : 'opacity:1;visibility:visible;transform:scale(1)'),
+      gOpen: this.state.gOpen,
+      gImg: arr[idx] || '',
+      galleryImgEl: (arr[idx]) ? React.createElement('img', { src: arr[idx], alt: 'Inspiración de outfit', style: { maxWidth: '100%', maxHeight: '70vh', borderRadius: '16px', boxShadow: '0 24px 60px rgba(0,0,0,.55)' } }) : null,
+      gTitle: this.state.gType === 'mujer' ? 'Inspiración · Ellas' : 'Inspiración · Ellos',
+      gPos: arr.length ? ((idx + 1) + ' / ' + arr.length) : '',
+      openMujer: () => this.setState({ gOpen: true, gType: 'mujer', gIdx: 0 }),
+      openHombre: () => this.setState({ gOpen: true, gType: 'hombre', gIdx: 0 }),
+      closeG: () => this.setState({ gOpen: false }),
+      stop: (e) => { e.stopPropagation(); },
+      prevG: (e) => { e.stopPropagation(); this.setState(s => { const a = this.galleries[s.gType] || []; return { gIdx: (s.gIdx - 1 + a.length) % a.length }; }); },
+      nextG: (e) => { e.stopPropagation(); this.setState(s => { const a = this.galleries[s.gType] || []; return { gIdx: (s.gIdx + 1) % a.length }; }); }
+    };
+  }
+}
+</script>
+</body>
+</html>
