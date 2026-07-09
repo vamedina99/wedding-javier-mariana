@@ -45,7 +45,12 @@
     if (!raw) return '';
     try {
       var n = decodeURIComponent(raw).trim().replace(/[_+]/g, ' ');
-      return n.replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+      var small = { 'y': 1, 'e': 1, 'de': 1, 'del': 1, 'la': 1, 'las': 1, 'los': 1 };
+      return n.replace(/\S+/g, function (w) {
+        var lw = w.toLowerCase();
+        if (small[lw]) return lw;
+        return lw.charAt(0).toUpperCase() + lw.slice(1);
+      });
     } catch (e) {
       return '';
     }
@@ -57,6 +62,9 @@
     var s = (raw || '').trim().toLowerCase();
     if (s === 'f' || s === 'mujer' || s === 'femenino') return 'Bienvenida';
     if (s === 'm' || s === 'hombre' || s === 'masculino') return 'Bienvenido';
+    if (s === 'fp' || s === 'mujeres' || s === 'femenino-plural') return 'Bienvenidas';
+    if (s === 'p' || s === 'mp' || s === 'plural' || s === 'pareja' ||
+        s === 'grupo' || s === 'hombres' || s === 'mixto') return 'Bienvenidos';
     return 'Bienvenid@';
   }
 
