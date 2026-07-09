@@ -51,11 +51,21 @@
     }
   }
 
+  function getWelcomeWord() {
+    var params = new URLSearchParams(window.location.search);
+    var raw = params.get('genero') || params.get('gender');
+    var s = (raw || '').trim().toLowerCase();
+    if (s === 'f' || s === 'mujer' || s === 'femenino') return 'Bienvenida';
+    if (s === 'm' || s === 'hombre' || s === 'masculino') return 'Bienvenido';
+    return 'Bienvenid@';
+  }
+
   function initGuestName() {
     var name = getGuestName();
-    var greeting = name ? ('Hola, ' + name) : 'Bienvenid@';
+    var welcome = getWelcomeWord();
+    var greeting = name ? (welcome + ' ' + name) : 'Bienvenid@';
     document.getElementById('greeting').textContent = greeting + ' 🤍';
-    document.getElementById('splash-name').textContent = name || 'Bienvenid@';
+    document.getElementById('splash-name').textContent = name ? (welcome + ' ' + name) : 'Bienvenid@';
 
     var confirmText = '¡Hola! ' + (name ? 'Soy ' + name + '. ' : '') +
       'Quiero confirmar mi asistencia a la boda de Javier Andrés y Mariana. 🤍';
@@ -64,7 +74,7 @@
   }
 
   function initAyudaLink() {
-    var ayudaText = 'Hola voy a asistir a la Boda de Javier Andres y Mariana, ayudame con los tiquetes de lancha ida y regreso por favor';
+    var ayudaText = 'Hola, voy a asistir a la Boda de Javier Andrés y Mariana. Ayúdame con los tiquetes de lancha (ida y regreso) y con el hospedaje por favor.';
     document.getElementById('wa-ayuda').href =
       'https://wa.me/' + WA_AYUDA_NUMBER + '?text=' + encodeURIComponent(ayudaText);
   }
