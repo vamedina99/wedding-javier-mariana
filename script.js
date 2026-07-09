@@ -93,9 +93,8 @@
   function initGuestName() {
     var name = getGuestName();
     var info = getWelcomeInfo(name);
-    var greeting = name ? (info.welcome + ' ' + name) : 'Bienvenid@';
-    document.getElementById('greeting').textContent = greeting + ' 🤍';
-    document.getElementById('splash-name').textContent = name ? (info.welcome + ' ' + name) : 'Bienvenid@';
+    document.getElementById('greeting').textContent = (name || 'Bienvenid@') + ' 🤍';
+    document.getElementById('splash-name').textContent = name || 'Bienvenid@';
     document.getElementById('splash-invited').textContent = info.invited;
 
     var confirmText = '¡Hola! ' + (name ? 'Soy ' + name + '. ' : '') +
