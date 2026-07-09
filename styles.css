@@ -51,9 +51,9 @@ button { font: inherit; border: none; background: none; padding: 0; }
 }
 
 .regalos__icon {
-  font-size: 42px;
-  line-height: 1;
-  margin-bottom: 10px;
+  color: #e08a6a;
+  line-height: 0;
+  margin-bottom: 12px;
 }
 
 .btn {
@@ -67,7 +67,7 @@ button { font: inherit; border: none; background: none; padding: 0; }
   cursor: pointer;
 }
 .btn--light { background: #fff; color: #6b5320; box-shadow: 0 8px 20px rgba(0,0,0,.2); }
-.btn--dark { background: #6b5320; color: #fff; font-size: 14px; padding: 11px 20px; }
+.btn--dark { background: #e08a6a; color: #fff; font-size: 14px; padding: 11px 20px; }
 .btn--dark:hover { color: #fff; opacity: .9; }
 .btn--whatsapp {
   background: #25D366; color: #fff; font-size: 16px; padding: 16px 32px;
