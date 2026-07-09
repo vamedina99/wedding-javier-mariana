@@ -128,7 +128,11 @@
   function initSplash() {
     var splash = document.getElementById('splash');
     var envelope = document.getElementById('envelope-btn');
-    function open() { splash.classList.add('is-opened'); }
+    document.body.classList.add('is-locked');
+    function open() {
+      splash.classList.add('is-opened');
+      document.body.classList.remove('is-locked');
+    }
     splash.addEventListener('click', open);
     envelope.addEventListener('click', open);
   }

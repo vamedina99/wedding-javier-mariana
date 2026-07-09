@@ -8,6 +8,7 @@ body {
   font-family: 'Mulish', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+body.is-locked { overflow: hidden; height: 100vh; touch-action: none; }
 a { color: #6b5320; text-decoration: none; }
 a:hover { color: #e08a6a; }
 img { display: block; max-width: 100%; }
