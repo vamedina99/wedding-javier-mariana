@@ -56,24 +56,47 @@
     }
   }
 
-  function getWelcomeWord() {
-    var params = new URLSearchParams(window.location.search);
-    var raw = params.get('genero') || params.get('gender');
-    var s = (raw || '').trim().toLowerCase();
-    if (s === 'f' || s === 'mujer' || s === 'femenino') return 'Bienvenida';
-    if (s === 'm' || s === 'hombre' || s === 'masculino') return 'Bienvenido';
-    if (s === 'fp' || s === 'mujeres' || s === 'femenino-plural') return 'Bienvenidas';
-    if (s === 'p' || s === 'mp' || s === 'plural' || s === 'pareja' ||
-        s === 'grupo' || s === 'hombres' || s === 'mixto') return 'Bienvenidos';
-    return 'Bienvenid@';
+  // Excepciones: nombres cuyo género NO sigue la regla "termina en 'a' = mujer".
+  // Agrega aquí los que hagan falta, en minúscula. Ej: 'andrea': 'm', 'nicolas': 'm'.
+  var GENDER_OVERRIDES = {
+    'jose': 'm', 'josue': 'm', 'noa': 'm', 'elias': 'm', 'lucas': 'm', 'matias': 'm',
+    'tobias': 'm', 'nicolas': 'm', 'andres': 'm',
+    'beatriz': 'f', 'isabel': 'f', 'carmen': 'f', 'raquel': 'f', 'ines': 'f',
+    'mercedes': 'f', 'dolores': 'f', 'pilar': 'f', 'soledad': 'f'
+  };
+
+  function genderOfFirstName(word) {
+    var w = (word || '').toLowerCase();
+    if (GENDER_OVERRIDES[w]) return GENDER_OVERRIDES[w];
+    return /a$/.test(w) ? 'f' : 'm';
+  }
+
+  // Devuelve la palabra de saludo y el texto "Estás/Están invitad_" según el nombre.
+  function getWelcomeInfo(name) {
+    if (!name) return { welcome: 'Bienvenid@', invited: 'Estás invitad@' };
+    // Separar en personas por conectores: "y", "e", "&", ","
+    var people = name.split(/\s+y\s+|\s+e\s+|\s*&\s*|\s*,\s*/i).filter(Boolean);
+    if (people.length > 1) {
+      var allFemale = people.every(function (p) {
+        return genderOfFirstName(p.trim().split(/\s+/)[0]) === 'f';
+      });
+      return allFemale
+        ? { welcome: 'Bienvenidas', invited: 'Están invitadas' }
+        : { welcome: 'Bienvenidos', invited: 'Están invitados' };
+    }
+    var g = genderOfFirstName(name.split(/\s+/)[0]);
+    return g === 'f'
+      ? { welcome: 'Bienvenida', invited: 'Estás invitada' }
+      : { welcome: 'Bienvenido', invited: 'Estás invitado' };
   }
 
   function initGuestName() {
     var name = getGuestName();
-    var welcome = getWelcomeWord();
-    var greeting = name ? (welcome + ' ' + name) : 'Bienvenid@';
+    var info = getWelcomeInfo(name);
+    var greeting = name ? (info.welcome + ' ' + name) : 'Bienvenid@';
     document.getElementById('greeting').textContent = greeting + ' 🤍';
-    document.getElementById('splash-name').textContent = name ? (welcome + ' ' + name) : 'Bienvenid@';
+    document.getElementById('splash-name').textContent = name ? (info.welcome + ' ' + name) : 'Bienvenid@';
+    document.getElementById('splash-invited').textContent = info.invited;
 
     var confirmText = '¡Hola! ' + (name ? 'Soy ' + name + '. ' : '') +
       'Quiero confirmar mi asistencia a la boda de Javier Andrés y Mariana. 🤍';
