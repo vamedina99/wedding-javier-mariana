@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damas de honor — Javier Andrés & Mariana</title>
+<meta name="description" content="Una misión especial para nuestras damas de honor.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Parisienne&family=Mulish:wght@300;400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    font-family: 'Mulish', system-ui, sans-serif;
+    color: #2c3a3a;
+    background: linear-gradient(160deg, #fbf5e1, #f4edd3 55%, #efe4bd);
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 22px 44px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    font-family: 'Mulish', sans-serif;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #b39a7a;
+    margin-bottom: 6px;
+  }
+  .intro-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(22px, 6vw, 30px);
+    color: #6b5320;
+    margin: 0 auto;
+    max-width: 340px;
+  }
+  .head {
+    margin-bottom: 26px;
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .is-open .head { opacity: 0; transform: translateY(-12px); pointer-events: none; }
+
+  /* ===== Panel que alterna caja / mensaje ===== */
+  .panel {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    min-height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ===== Vista cerrada (caja) ===== */
+  .closed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 26px;
+    transition: opacity .7s ease, transform .7s ease;
+    transition-delay: .9s;
+  }
+  .is-open .closed {
+    opacity: 0;
+    transform: scale(.85);
+    pointer-events: none;
+    transition-delay: 0s;
+  }
+
+  .stage {
+    perspective: 1100px;
+    width: 240px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .gift {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transform: rotateX(-22deg) rotateY(-30deg);
+    animation: float 4.5s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%, 100% { transform: rotateX(-22deg) rotateY(-30deg) translateY(0); }
+    50%      { transform: rotateX(-22deg) rotateY(-30deg) translateY(-12px); }
+  }
+
+  .face {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+
+  /* --- Base de la caja (abierta arriba) --- */
+  .base__front, .base__back {
+    width: 160px; height: 120px;
+    margin-left: -80px; margin-top: -40px;
+    background: linear-gradient(#eb9a7c, #e08a6a);
+  }
+  .base__front { transform: translateZ(80px); }
+  .base__back  { transform: translateZ(-80px) rotateY(180deg); background: linear-gradient(#e08a6a, #d47a58); }
+  .base__right, .base__left {
+    width: 160px; height: 120px;
+    margin-left: -80px; margin-top: -40px;
+    background: linear-gradient(#e6906f, #d67c5b);
+  }
+  .base__right { transform: rotateY(90deg) translateZ(80px); }
+  .base__left  { transform: rotateY(-90deg) translateZ(80px); }
+  .base__bottom {
+    width: 160px; height: 160px;
+    margin-left: -80px; margin-top: -80px;
+    background: #cf7454;
+    transform: rotateX(90deg) translateZ(-60px);
+  }
+
+  /* Cinta vertical sobre el frente */
+  .base__front::after, .base__back::after {
+    content: ""; position: absolute; left: 50%; top: 0;
+    width: 26px; height: 100%; margin-left: -13px;
+    background: linear-gradient(90deg, #f0d089, #e7c877 50%, #d9b26a);
+  }
+
+  /* --- Tapa --- */
+  .lid {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 0; height: 0;
+    transform-style: preserve-3d;
+    /* la tapa como conjunto: sube al abrir */
+    transform: translateY(-26px);
+    transition: transform 1.05s cubic-bezier(.34,1.2,.4,1);
+  }
+  .is-open .lid { transform: translateY(-240px) rotateZ(16deg) rotateX(10deg); }
+
+  .lid__top {
+    position: absolute; left: -88px; top: -88px;
+    width: 176px; height: 176px;
+    background: radial-gradient(circle at 40% 35%, #ee9f81, #e08a6a);
+    transform: rotateX(90deg) translateZ(-18px);
+    border-radius: 4px;
+  }
+  .lid__front, .lid__back {
+    position: absolute; left: -88px; top: -18px;
+    width: 176px; height: 36px;
+    background: linear-gradient(#e69073, #db8161);
+  }
+  .lid__front { transform: translateZ(88px); }
+  .lid__back  { transform: translateZ(-88px) rotateY(180deg); }
+  .lid__right, .lid__left {
+    position: absolute; left: -88px; top: -18px;
+    width: 176px; height: 36px;
+    background: linear-gradient(#dd8563, #d17953);
+  }
+  .lid__right { transform: rotateY(90deg) translateZ(88px); }
+  .lid__left  { transform: rotateY(-90deg) translateZ(88px); }
+
+  /* Cinta sobre la tapa (cruz) */
+  .lid__top::before, .lid__top::after {
+    content: ""; position: absolute; background: linear-gradient(90deg, #f0d089, #e7c877 50%, #d9b26a);
+  }
+  .lid__top::before { left: 50%; top: 0; width: 26px; height: 100%; margin-left: -13px; }
+  .lid__top::after  { top: 50%; left: 0; height: 26px; width: 100%; margin-top: -13px; }
+
+  /* Moño */
+  .bow {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%) translateZ(2px);
+  }
+  .bow__loop {
+    position: absolute; width: 38px; height: 24px;
+    background: linear-gradient(135deg, #f2d590, #dcb562);
+    border-radius: 50%;
+    box-shadow: inset 0 0 6px rgba(150,110,30,.35);
+  }
+  .bow__loop--l { left: -36px; top: -12px; transform: rotate(-26deg); }
+  .bow__loop--r { left: -2px;  top: -12px; transform: rotate(26deg); }
+  .bow__knot {
+    position: absolute; left: -10px; top: -11px;
+    width: 20px; height: 22px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #f4dc98, #d3aa55);
+    box-shadow: 0 1px 3px rgba(120,90,20,.4);
+  }
+
+  .name-script {
+    font-family: 'Parisienne', cursive;
+    font-size: clamp(38px, 12vw, 60px);
+    color: #6b5320;
+    line-height: 1;
+  }
+  .hint {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Mulish', sans-serif; letter-spacing: 3px;
+    text-transform: uppercase; font-size: 12px; color: #9a8a72;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+
+  /* ===== Vista abierta (mensaje) ===== */
+  .message {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(28px) scale(.94);
+    transition: opacity .8s ease, transform .8s ease, visibility .8s;
+    transition-delay: 0s;
+    padding: 4px;
+  }
+  .is-open .message {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    transition-delay: 1.15s;
+  }
+
+  .card {
+    background: #fffdf8;
+    border: 1px solid #efe4d2;
+    border-radius: 22px;
+    box-shadow: 0 26px 60px rgba(90,70,25,.20);
+    padding: 34px 26px 30px;
+    max-width: 440px;
+    width: 100%;
+    position: relative;
+  }
+  .card__emoji { font-size: 44px; line-height: 1; }
+  .card__role {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-weight: 600;
+    font-size: clamp(24px, 7vw, 32px);
+    color: #e08a6a;
+    margin: 6px 0 2px;
+  }
+  .card__hi {
+    font-family: 'Parisienne', cursive;
+    font-size: clamp(30px, 9vw, 42px);
+    color: #6b5320;
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+  .card__text {
+    font-size: 15px; line-height: 1.62; color: #5a6a68;
+    text-align: left;
+  }
+  .card__text p { margin: 0 0 12px; }
+  .card__text p:last-child { margin-bottom: 0; }
+
+  .card__rule {
+    width: 54px; height: 2px; margin: 16px auto 16px;
+    background: linear-gradient(90deg, transparent, #e7c877, transparent);
+  }
+
+  .wa {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: #25D366; color: #fff; text-decoration: none;
+    font-weight: 700; font-size: 15px;
+    padding: 13px 24px; border-radius: 999px;
+    box-shadow: 0 10px 22px rgba(37,211,102,.30);
+  }
+  .card__sign {
+    margin-top: 18px;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 15px; color: #9a8a72;
+  }
+
+  /* Destellos al abrir */
+  .sparkles { position: absolute; inset: 0; pointer-events: none; }
+  .sparkles span {
+    position: absolute; left: 50%; top: 42%;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: #f0d089; opacity: 0;
+  }
+  .is-open .sparkles span { animation: burst .9s ease-out forwards; animation-delay: .55s; }
+  @keyframes burst {
+    0%   { opacity: 0; transform: translate(0,0) scale(.3); }
+    30%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(1); }
+  }
+
+  @media (max-width: 420px) {
+    .gift { transform: scale(.82) rotateX(-22deg) rotateY(-30deg); }
+    @keyframes float {
+      0%,100% { transform: scale(.82) rotateX(-22deg) rotateY(-30deg) translateY(0); }
+      50%     { transform: scale(.82) rotateX(-22deg) rotateY(-30deg) translateY(-12px); }
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap" id="wrap">
+  <div class="head" id="head">
+    <div class="eyebrow">Damas de honor</div>
+    <div class="intro-title">Tenemos una misión muy especial para ti</div>
+  </div>
+
+  <div class="panel">
+    <!-- CAJA CERRADA -->
+    <div class="closed" id="closed">
+      <div class="stage" id="stage">
+        <div class="gift" id="gift">
+          <!-- base -->
+          <div class="face base__back"></div>
+          <div class="face base__left"></div>
+          <div class="face base__right"></div>
+          <div class="face base__bottom"></div>
+          <div class="face base__front"></div>
+          <!-- tapa -->
+          <div class="lid" id="lid">
+            <div class="lid__back"></div>
+            <div class="lid__left"></div>
+            <div class="lid__right"></div>
+            <div class="lid__front"></div>
+            <div class="lid__top">
+              <div class="bow">
+                <div class="bow__loop bow__loop--l"></div>
+                <div class="bow__loop bow__loop--r"></div>
+                <div class="bow__knot"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="name-script" id="dama-name">Bienvenida</div>
+      <div class="hint">Toca la caja para abrir ✦</div>
+    </div>
+
+    <!-- MENSAJE -->
+    <div class="message" id="message">
+      <div class="sparkles" id="sparkles"></div>
+      <div class="card">
+        <div class="card__emoji" id="m-emoji">💌</div>
+        <div class="card__role" id="m-role">Guardiana</div>
+        <div class="card__hi" id="m-hi">Hola</div>
+        <div class="card__text" id="m-text"></div>
+        <div class="card__rule"></div>
+        <a class="wa" id="m-wa" href="#" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.04-.96.22-3.23-.67-2.72-1.07-4.45-3.85-4.58-4.03-.13-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.95-2.25.24-.27.53-.34.71-.34.18 0 .36.01.51.01.16.01.38-.06.6.46.24.56.79 1.94.86 2.08.07.14.11.31.02.49-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.86.27.14.45.2.51.31.07.11.07.63-.17 1.31z"></path></svg>
+          Enviar mi propuesta
+        </a>
+        <div class="card__sign">Con cariño, Mariana 🤍</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  // Número de WhatsApp donde las damas envían su propuesta (mismo de confirmación).
+  var WA_NUMBER = '573136389010';
+
+  var DAMAS = {
+    marcela: {
+      nombre: 'Marcela',
+      emoji: '💐',
+      rol: 'La guardiana del bouquet',
+      texto: [
+        'Tu misión será acompañarme a elegir las flores que llevaré conmigo en uno de los momentos más importantes de mi vida.',
+        'Quiero que me envíes 3 inspiraciones de ramos que creas que representan mi esencia y me cuentes cuál escogerías para mí y por qué.'
+      ]
+    },
+    laura: {
+      nombre: 'Laura',
+      emoji: '🎶',
+      rol: 'La guardiana de la música',
+      texto: [
+        'Tu misión será elegir las canciones que creas que deberían acompañarme en esta nueva etapa.',
+        'Quiero que me envíes 3 canciones: una que te recuerde a nuestra amistad, una que represente el amor y una que imagines sonando en uno de los momentos más especiales de mi boda.'
+      ]
+    },
+    victoria: {
+      nombre: 'Victoria',
+      emoji: '✨',
+      rol: 'La guardiana del momento wow',
+      texto: [
+        'Serás la encargada de imaginar ese momento de mi boda que haga que todos mis invitados digan: “¡WOW, no me esperaba esto!”.',
+        'Quiero que me propongas 3 ideas originales para crear un momento especial durante la recepción: puede ser una entrada, una sorpresa, una dinámica, un show, algo con las luces o la música para sorprender a mis invitados.'
+      ]
+    },
+    natalie: {
+      nombre: 'Natalie',
+      emoji: '🍹',
+      rol: 'La guardiana de los cócteles',
+      texto: [
+        'Serás la experta oficial en bebidas de mi gran día.',
+        'Quiero que me propongas 3 ideas de cócteles o bebidas especiales para los invitados, pensando en que sean deliciosas, bonitas y que tengan ese toque especial que haga que todos quieran probarlas.',
+        'Puedes inspirarte en nuestros gustos, en los colores de la boda, en la personalidad de los novios o incluso inventar un cóctel que tenga un significado especial para nosotros.'
+      ]
+    }
+  };
+
+  function normalize(s) {
+    return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+  }
+
+  function getDama() {
+    var params = new URLSearchParams(window.location.search);
+    var key = normalize(params.get('dama') || params.get('invitada'));
+    return DAMAS[key] || null;
+  }
+
+  function buildSparkles() {
+    var host = document.getElementById('sparkles');
+    var n = 14;
+    var html = '';
+    for (var i = 0; i < n; i++) {
+      var ang = (Math.PI * 2 * i) / n;
+      var dist = 90 + Math.random() * 70;
+      var tx = Math.cos(ang) * dist;
+      var ty = Math.sin(ang) * dist;
+      html += '<span style="--tx:' + tx.toFixed(0) + 'px;--ty:' + ty.toFixed(0) + 'px"></span>';
+    }
+    host.innerHTML = html;
+  }
+
+  function initMessage(dama) {
+    document.getElementById('m-emoji').textContent = dama.emoji;
+    document.getElementById('m-role').textContent = dama.rol;
+    document.getElementById('m-hi').textContent = 'Hola ' + dama.nombre;
+    document.getElementById('m-text').innerHTML =
+      dama.texto.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+
+    var waText = '¡Hola! Soy ' + dama.nombre + ', ' + dama.rol.toLowerCase() +
+      ' 💫 Aquí va mi propuesta para la boda de Javier Andrés y Mariana:';
+    document.getElementById('m-wa').href =
+      'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(waText);
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    buildSparkles();
+    var dama = getDama();
+
+    if (dama) {
+      document.getElementById('dama-name').textContent = dama.nombre;
+      initMessage(dama);
+    } else {
+      // Sin nombre válido: mensaje genérico
+      document.getElementById('dama-name').textContent = 'Hola 🤍';
+      document.getElementById('m-emoji').textContent = '💌';
+      document.getElementById('m-role').textContent = 'Damas de honor';
+      document.getElementById('m-hi').textContent = '¡Hola!';
+      document.getElementById('m-text').innerHTML =
+        '<p>Este enlace es una sorpresa personalizada para nuestras damas de honor.</p>' +
+        '<p>Si crees que es para ti, escríbele a Mariana para recibir tu enlace con tu misión especial. 💫</p>';
+      document.getElementById('m-wa').href = 'https://wa.me/' + WA_NUMBER;
+    }
+
+    var wrap = document.getElementById('wrap');
+    var stage = document.getElementById('stage');
+    function open() {
+      if (wrap.classList.contains('is-open')) return;
+      wrap.classList.add('is-open');
+    }
+    stage.addEventListener('click', open);
+  });
+})();
+</script>
+
+</body>
+</html>
