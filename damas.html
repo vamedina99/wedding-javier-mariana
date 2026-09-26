@@ -171,24 +171,33 @@
   .lid__top::before { left: 50%; top: 0; width: 26px; height: 100%; margin-left: -13px; }
   .lid__top::after  { top: 50%; left: 0; height: 26px; width: 100%; margin-top: -13px; }
 
-  /* Moño */
+  /* Moño 3D sobre la tapa */
   .bow {
-    position: absolute; left: 50%; top: 50%;
-    transform: translate(-50%, -50%) translateZ(2px);
+    position: absolute; left: 0; top: 0;
+    width: 0; height: 0;
+    transform-style: preserve-3d;
+    transform: translateY(-66px) translateZ(6px) rotateX(-20deg);
   }
+  .bow span { position: absolute; }
   .bow__loop {
-    position: absolute; width: 38px; height: 24px;
-    background: linear-gradient(135deg, #f2d590, #dcb562);
-    border-radius: 50%;
-    box-shadow: inset 0 0 6px rgba(150,110,30,.35);
+    width: 42px; height: 32px;
+    background: linear-gradient(140deg, #f4da93, #d7ae57);
+    box-shadow: inset -3px -3px 8px rgba(150,110,20,.35), 0 2px 5px rgba(120,90,20,.25);
   }
-  .bow__loop--l { left: -36px; top: -12px; transform: rotate(-26deg); }
-  .bow__loop--r { left: -2px;  top: -12px; transform: rotate(26deg); }
+  .bow__loop--l { left: -44px; top: -24px; border-radius: 72% 38% 55% 45%; transform: rotate(-7deg); }
+  .bow__loop--r { left:   2px; top: -24px; border-radius: 38% 72% 45% 55%; transform: rotate(7deg); }
+  .bow__tail {
+    width: 15px; height: 36px; top: 2px;
+    background: linear-gradient(#eccb76, #d5ab55);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%);
+  }
+  .bow__tail--l { left: -15px; transform-origin: top center; transform: rotate(17deg); }
+  .bow__tail--r { left:   0px; transform-origin: top center; transform: rotate(-17deg); }
   .bow__knot {
-    position: absolute; left: -10px; top: -11px;
-    width: 20px; height: 22px; border-radius: 50%;
-    background: radial-gradient(circle at 40% 35%, #f4dc98, #d3aa55);
-    box-shadow: 0 1px 3px rgba(120,90,20,.4);
+    left: -12px; top: -13px; width: 24px; height: 26px;
+    border-radius: 8px;
+    background: radial-gradient(circle at 42% 34%, #f7e2a3, #cfa74e);
+    box-shadow: 0 2px 5px rgba(120,90,20,.4);
   }
 
   .name-script {
@@ -335,12 +344,13 @@
             <div class="lid__left"></div>
             <div class="lid__right"></div>
             <div class="lid__front"></div>
-            <div class="lid__top">
-              <div class="bow">
-                <div class="bow__loop bow__loop--l"></div>
-                <div class="bow__loop bow__loop--r"></div>
-                <div class="bow__knot"></div>
-              </div>
+            <div class="lid__top"></div>
+            <div class="bow">
+              <span class="bow__tail bow__tail--l"></span>
+              <span class="bow__tail bow__tail--r"></span>
+              <span class="bow__loop bow__loop--l"></span>
+              <span class="bow__loop bow__loop--r"></span>
+              <span class="bow__knot"></span>
             </div>
           </div>
         </div>
