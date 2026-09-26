@@ -109,26 +109,21 @@
     top: 50%;
   }
 
-  /* --- Base de la caja (abierta arriba) --- */
-  .base__front, .base__back {
+  /* --- Base: caja blanca abierta arriba (span y: -60..60) --- */
+  .base__front, .base__back, .base__right, .base__left {
     width: 160px; height: 120px;
-    margin-left: -80px; margin-top: -40px;
-    background: linear-gradient(#eb9a7c, #e08a6a);
+    margin-left: -80px; margin-top: -60px;
+    border: 1px solid rgba(190,170,130,.18);
   }
-  .base__front { transform: translateZ(80px); }
-  .base__back  { transform: translateZ(-80px) rotateY(180deg); background: linear-gradient(#e08a6a, #d47a58); }
-  .base__right, .base__left {
-    width: 160px; height: 120px;
-    margin-left: -80px; margin-top: -40px;
-    background: linear-gradient(#e6906f, #d67c5b);
-  }
-  .base__right { transform: rotateY(90deg) translateZ(80px); }
-  .base__left  { transform: rotateY(-90deg) translateZ(80px); }
+  .base__front { transform: translateZ(80px); background: linear-gradient(#ffffff, #f4eee4); }
+  .base__back  { transform: translateZ(-80px) rotateY(180deg); background: linear-gradient(#f4ede1, #e9e0d1); }
+  .base__right { transform: rotateY(90deg) translateZ(80px); background: linear-gradient(#efe8dc, #e2d9c9); }
+  .base__left  { transform: rotateY(-90deg) translateZ(80px); background: linear-gradient(#f7f0e5, #ece4d5); }
   .base__bottom {
     width: 160px; height: 160px;
     margin-left: -80px; margin-top: -80px;
-    background: #cf7454;
-    transform: rotateX(90deg) translateZ(-60px);
+    background: #ddd3c1;
+    transform: translateY(60px) rotateX(90deg);
   }
 
   /* Cinta vertical sobre el frente */
@@ -138,39 +133,36 @@
     background: linear-gradient(90deg, #f0d089, #e7c877 50%, #d9b26a);
   }
 
-  /* --- Tapa --- */
+  /* --- Tapa: cara plana arriba, faldón hacia abajo --- */
   .lid {
     position: absolute;
     left: 50%; top: 50%;
     width: 0; height: 0;
     transform-style: preserve-3d;
-    /* la tapa como conjunto: sube al abrir */
-    transform: translateY(-26px);
+    transform: translateY(0);
     transition: transform 1.05s cubic-bezier(.34,1.2,.4,1);
   }
-  .is-open .lid { transform: translateY(-240px) rotateZ(16deg) rotateX(10deg); }
+  .is-open .lid { transform: translateY(-235px) rotateZ(14deg); }
 
   .lid__top {
-    position: absolute; left: -88px; top: -88px;
-    width: 176px; height: 176px;
-    background: radial-gradient(circle at 40% 35%, #ee9f81, #e08a6a);
-    transform: rotateX(90deg) translateZ(-18px);
-    border-radius: 4px;
+    position: absolute; left: 0; top: 0;
+    width: 178px; height: 178px;
+    margin-left: -89px; margin-top: -89px;
+    background: radial-gradient(circle at 42% 36%, #ffffff, #efe7d9);
+    transform: translateY(-62px) rotateX(90deg);
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 1px rgba(190,170,130,.16);
   }
-  .lid__front, .lid__back {
-    position: absolute; left: -88px; top: -18px;
-    width: 176px; height: 36px;
-    background: linear-gradient(#e69073, #db8161);
+  .lid__front, .lid__back, .lid__right, .lid__left {
+    position: absolute; left: 0; top: 0;
+    width: 178px; height: 44px;
+    margin-left: -89px; margin-top: -22px;
+    border: 1px solid rgba(190,170,130,.18);
   }
-  .lid__front { transform: translateZ(88px); }
-  .lid__back  { transform: translateZ(-88px) rotateY(180deg); }
-  .lid__right, .lid__left {
-    position: absolute; left: -88px; top: -18px;
-    width: 176px; height: 36px;
-    background: linear-gradient(#dd8563, #d17953);
-  }
-  .lid__right { transform: rotateY(90deg) translateZ(88px); }
-  .lid__left  { transform: rotateY(-90deg) translateZ(88px); }
+  .lid__front { transform: translateY(-40px) translateZ(89px); background: linear-gradient(#ffffff, #f2ebdf); }
+  .lid__back  { transform: translateY(-40px) translateZ(-89px) rotateY(180deg); background: linear-gradient(#f3ece0, #e8dfd0); }
+  .lid__right { transform: translateY(-40px) rotateY(90deg) translateZ(89px); background: linear-gradient(#eee7db, #e1d8c8); }
+  .lid__left  { transform: translateY(-40px) rotateY(-90deg) translateZ(89px); background: linear-gradient(#f5eee3, #eae1d2); }
 
   /* Cinta sobre la tapa (cruz) */
   .lid__top::before, .lid__top::after {
@@ -272,6 +264,13 @@
     width: 54px; height: 2px; margin: 16px auto 16px;
     background: linear-gradient(90deg, transparent, #e7c877, transparent);
   }
+  .card__accept {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic; font-weight: 600;
+    font-size: clamp(20px, 6vw, 26px);
+    color: #6b5320;
+    margin-bottom: 14px;
+  }
 
   .wa {
     display: inline-flex; align-items: center; gap: 9px;
@@ -313,7 +312,7 @@
 
 <div class="wrap" id="wrap">
   <div class="head" id="head">
-    <div class="eyebrow">Damas de honor</div>
+    <div class="eyebrow">Guardiana de la novia</div>
     <div class="intro-title">Tenemos una misión muy especial para ti</div>
   </div>
 
@@ -357,6 +356,7 @@
         <div class="card__hi" id="m-hi">Hola</div>
         <div class="card__text" id="m-text"></div>
         <div class="card__rule"></div>
+        <div class="card__accept">¿Aceptas tu misión?</div>
         <a class="wa" id="m-wa" href="#" target="_blank" rel="noopener">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.16c-.24.68-1.42 1.32-1.96 1.36-.5.04-.96.22-3.23-.67-2.72-1.07-4.45-3.85-4.58-4.03-.13-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.95-2.25.24-.27.53-.34.71-.34.18 0 .36.01.51.01.16.01.38-.06.6.46.24.56.79 1.94.86 2.08.07.14.11.31.02.49-.09.18-.14.29-.27.45-.14.16-.29.36-.41.48-.14.14-.28.29-.12.56.16.27.71 1.17 1.53 1.9 1.05.94 1.94 1.23 2.21 1.37.27.14.43.12.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.86.27.14.45.2.51.31.07.11.07.63-.17 1.31z"></path></svg>
           Enviar mi propuesta
@@ -441,7 +441,7 @@
   function initMessage(dama) {
     document.getElementById('m-emoji').textContent = dama.emoji;
     document.getElementById('m-role').textContent = dama.rol;
-    document.getElementById('m-hi').textContent = 'Hola ' + dama.nombre;
+    document.getElementById('m-hi').textContent = dama.nombre;
     document.getElementById('m-text').innerHTML =
       dama.texto.map(function (p) { return '<p>' + p + '</p>'; }).join('');
 
@@ -460,10 +460,10 @@
       initMessage(dama);
     } else {
       // Sin nombre válido: mensaje genérico
-      document.getElementById('dama-name').textContent = 'Hola 🤍';
+      document.getElementById('dama-name').textContent = 'Para ti 🤍';
       document.getElementById('m-emoji').textContent = '💌';
-      document.getElementById('m-role').textContent = 'Damas de honor';
-      document.getElementById('m-hi').textContent = '¡Hola!';
+      document.getElementById('m-role').textContent = 'Guardiana de la novia';
+      document.getElementById('m-hi').textContent = 'Para ti 🤍';
       document.getElementById('m-text').innerHTML =
         '<p>Este enlace es una sorpresa personalizada para nuestras damas de honor.</p>' +
         '<p>Si crees que es para ti, escríbele a Mariana para recibir tu enlace con tu misión especial. 💫</p>';
